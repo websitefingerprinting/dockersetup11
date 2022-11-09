@@ -88,10 +88,10 @@ build:
 	@docker build -t tbcrawl11 --rm .
 
 run:
-	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES} --user docker --shm-size 2g --net=bridge  \
+	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES}  --shm-size 2g --net=bridge  \
 	--privileged tbcrawl11 ${DOCKERSETUP_PATH}/Entrypoint.sh "$(wfd)" "$(tag)" "$(port)" "$(fingerprint)" "$(cert)" "crawler.py $(CRAWL_PARAMS)"
 shell:
-	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES}  --user docker --shm-size 2g --net=bridge  \
+	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES}  --shm-size 2g --net=bridge  \
 	--privileged tbcrawl11 /bin/bash
 clean:
 # 	@rm -rf ${HOST_CRAWL_PATH}/dump/*

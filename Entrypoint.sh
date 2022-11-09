@@ -32,8 +32,8 @@ chmod -R 777 /home/docker/tor-browser_en-US/
 
 # cp PT repository to container's own space.
 echo "Get WFDefProxy"
-cp -r /home/docker/${PT} /home/${PT}
-chmod -R 777 /home/${PT}
+cp -r /home/docker/${PT} /home/docker/${PT}-cp
+chmod -R 777 /home/docker/${PT}-cp
 
 
 # set user profile js file
@@ -46,7 +46,7 @@ pushd ${BASE}
 # create dockerfile
 # echo 'UseBridges 1' > ${TORRC_PATH}
 # echo 'Bridge '${wfd}' 40.121.250.145:'${port}' '${fingerprint}' '${cert}'' >> ${TORRC_PATH}
-echo 'ClientTransportPlugin '${wfd}' exec /home/'${PT}'/obfs4proxy/obfs4proxy' >> ${TORRC_PATH}
+echo 'ClientTransportPlugin '${wfd}' exec /home/docker/'${PT}'-cp/obfs4proxy/obfs4proxy' >> ${TORRC_PATH}
 
 
 
@@ -60,4 +60,6 @@ fi
 # # launch crawler
 pushd ${BASE}/docker/AlexaCrawler
 export MOZ_HEADLESS=1
-python ${crawler}
+
+## TBB11 requires non-root to run 
+sudo -u docker -H python ${crawler}

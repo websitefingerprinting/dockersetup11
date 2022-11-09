@@ -38,14 +38,14 @@ RUN pip install scikit-learn==0.23.2
 RUN pip install pyvirtualdisplay
 RUN pip install tcconfig
 
-# add host user to container
+# # add host user to container
 RUN adduser --system --group --disabled-password --gecos '' --shell /bin/bash docker
+
 
 # download geckodriver
 ADD https://github.com/mozilla/geckodriver/releases/download/v0.31.0/geckodriver-v0.31.0-linux64.tar.gz /bin/
 RUN tar -zxvf /bin/geckodriver* -C /bin/
 ENV PATH /bin/geckodriver:$PATH
-
 
 
 # Set the display
