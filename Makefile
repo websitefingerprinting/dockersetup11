@@ -12,6 +12,8 @@ DOCKERSETUP_PATH=/home/docker/dockersetup
 TORCONFIG_PATH=/home/docker/tor-config
 # TBB_PATH=/home/docker/tor-browser_en-US/
 
+# Configuration
+# !! Remember to check the crawler folder name
 HOST_CRAWL_PATH=${HOME}/AlexaCrawler
 HOST_TORCONFIG_PATH=${HOME}/tor-config
 HOST_SSH=${HOME}/.ssh
