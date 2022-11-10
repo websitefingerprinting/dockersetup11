@@ -10,7 +10,7 @@ Therefore, we built another project called [WFCraweler](https://github.com/websi
 Note that this is only for research purpose. 
 
 ## Our need
-We need to use command line tools to drive TBB11, and we may need to change the torrc configuration 
+We need to use command line tools to drive TBB 11, and we may need to change the torrc configuration 
 and let the TBB to close the window after the loading finishes.
 Since the Tor Browser Bundle seems to change significantly after upgrading to version 11, 
 our previous way to meet these needs does not work anymore, as explained as follows.
@@ -28,7 +28,8 @@ As Tor browser will not close itself after a loading finishes, we choose to use 
 Search and install ``Tampermonkey`` extension and load the script `closeAfterLoad.js` in this repository in tampermonkey. 
 
 ### 3. Pass torrc configuration to TBB 11
-The biggest change in TBB 11 is that it will overwrite the items in `Browser/TorBrowser/Data/Tor/torrc` if **this item can be found in the browser's configuration 
+The biggest change in TBB 11 is that it will overwrite the items in `Browser/TorBrowser/Data/Tor/torrc` after every launch 
+if **this item can be found in the browser's configuration 
 (i.e., any setting found in the GUI or in `about:config`).** 
 Therefore, to have a customized torrc, 
 we should take advantage of [AutoConfig](https://support.mozilla.org/en-US/kb/customizing-firefox-using-autoconfig) 
@@ -39,7 +40,7 @@ Now the correct settings should be populated by Tor Launcher and reflected in to
 
 For other torrc configurations that are not in `about:config`, you can directly add them in the torrc file.
 
-We also pass necessary browser settings to TBB 11 here. We have explained the use of these settings in `firefox.cfg`. 
+We also pass necessary browser settings to TBB 11 here. We explain the use of these settings in `firefox.cfg`. 
 
 ### 4. Run the modified TBB 11 in headless mode
 To run the modified browser, simply use the command `./Browser/start-tor-browser --verbose --headless {some url}`. 
@@ -58,7 +59,7 @@ just follow the above steps.
 
 
 ## Acknowledgment
-- Thanks for the help from [Hamy](mr.h4my@gmail.com) on how to hack firefox. 
+- Thanks for the help from Hamy on how to hack firefox. 
 - The Makefile is based on Nate Mathews's project [Tor-Browser-Crawler-Video](https://github.com/notem/tor-browser-crawler-video). 
 
 ## Contact 
