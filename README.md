@@ -1,4 +1,4 @@
-# A dockerized Tor Browser Crawler (TBB version 11)
+# A dockerized Tor Browser (TBB version 11)
 
 ## What? 
 This repository contains a modified Tor Browser 11.5.6 that can work in the docker container 
