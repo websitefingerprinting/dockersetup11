@@ -63,4 +63,4 @@ just follow the above steps.
 - The Makefile is based on Nate Mathews's project [Tor-Browser-Crawler-Video](https://github.com/notem/tor-browser-crawler-video). 
 
 ## Contact 
-Feel free to email me for any problem (jgongac at connect dot ust doc hk). 
+Feel free to email me for any problem (jgongac at connect dot ust dot hk). 
