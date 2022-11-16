@@ -29,22 +29,22 @@ echo "Get TBB"
 pushd ${BASE}
 cp ./dockersetup/tor-browser_en-US.tar.xz ${BASE}/tor-browser_en-US-cp.tar.xz
 tar -xf tor-browser_en-US-cp.tar.xz -C ${BASE}
-chmod -R 777 ${BASE}/tor-browser_en-US/
 rm ${BASE}/tor-browser_en-US-cp.tar.xz
-
-# cp PT repository to container's own space.
-echo "Get WFDefProxy"
-cp -r /home/docker/${PT} /home/docker/${PT}-cp
-chmod -R 777 /home/docker/${PT}-cp
 
 # set user profile js file
 cp /home/docker/dockersetup/autoconfig.js ${AUTO_CONFIG_PATH}
 cp /home/docker/dockersetup/firefox.cfg ${TORRC_CONFIG_PATH}
 
-
-# echo 'UseBridges 1' > ${TORRC_PATH}
-# echo 'Bridge '${wfd}' 40.121.250.145:'${port}' '${fingerprint}' '${cert}'' >> ${TORRC_PATH}
+# Write in torrc that can not be set in firefox.cfg 
 echo 'ClientTransportPlugin '${wfd}' exec /home/docker/'${PT}'-cp/obfs4proxy/obfs4proxy' >> ${TORRC_PATH}
+
+# change privilege 
+chmod -R 777 ${BASE}/tor-browser_en-US/
+
+# cp PT repository to container's own space.
+echo "Get WFDefProxy"
+cp -r /home/docker/${PT} /home/docker/${PT}-cp
+chmod -R 777 /home/docker/${PT}-cp
 
 
 
