@@ -28,7 +28,7 @@ pushd /home/jgongac/dockersetup11
 
 # create sessions
 
-host_num=7
+host_num=12
 
 
 for i in $(seq 1 $host_num);

@@ -42,8 +42,8 @@ tag=tbb1
 start=0
 end=100
 
-m=6
-b=3
+m=5
+b=2
 mode=clean
 open=0
 
@@ -89,6 +89,11 @@ CRAWL_PARAMS=--start ${start} --end ${end} -m ${m} -b ${b} \
 build:
 	@docker build -t tbcrawl11 --rm .
 
+init:
+	@mkdir -p ${HOST}/AlexaCrawler/dump
+	@mkdir -p ${HOST}/tor-config
+	@chmod 777 ${HOST}/AlexaCrawler/dump
+	@chmod 777 ${HOST}/tor-config
 run:
 	@docker run -it --rm --name ${tag} ${ENV_VARS} ${VOLUMES}  --shm-size 2g --net=bridge  \
 	--privileged tbcrawl11 ${DOCKERSETUP_PATH}/Entrypoint.sh "$(wfd)" "$(tag)" "$(port)" "$(fingerprint)" "$(cert)" "crawler.py $(CRAWL_PARAMS)"
