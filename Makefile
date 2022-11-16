@@ -80,9 +80,10 @@ cert=""
 
 #commandline arguments
 CRAWL_PARAMS=--start ${start} --end ${end} -m ${m} -b ${b} \
---open ${open} \
+--open ${open} --headless\
 --who ${tag} --mode ${mode} \
---tbblog ${TORCONFIG_PATH}/torclient-${tag}.log --headless \
+--tbblog ${TORCONFIG_PATH}/torclient-${tag}.log  \
+-w sites/Tranco_26Oct_2022_top10k_filtered_cp.list 
 # -l ${BASE_PATH}/AlexaCrawler/list/extra.list -s
 
 # Make routines
