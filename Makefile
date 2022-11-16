@@ -82,7 +82,7 @@ cert=""
 CRAWL_PARAMS=--start ${start} --end ${end} -m ${m} -b ${b} \
 --open ${open} \
 --who ${tag} --mode ${mode} \
---tbblog ${TORCONFIG_PATH}/torclient-${tag}.log \
+--tbblog ${TORCONFIG_PATH}/torclient-${tag}.log --headless \
 # -l ${BASE_PATH}/AlexaCrawler/list/extra.list -s
 
 # Make routines
