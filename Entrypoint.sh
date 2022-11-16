@@ -3,7 +3,7 @@
 # configures and runs a crawl (inside a docker container)
 # IMPORTANT: If this file is changed, docker container needs to be rebuilt
 DEVICE=eth0
-BASE='/home'
+BASE='/home/docker'
 
 AUTO_CONFIG_PATH='/home/docker/tor-browser_en-US/Browser/defaults/pref/ '
 TORRC_CONFIG_PATH='/home/docker/tor-browser_en-US/Browser/'
@@ -26,9 +26,11 @@ ethtool -K ${DEVICE} tx off rx off tso off gso off gro off lro off
 
 # cp TBB repository to container's own space
 echo "Get TBB"
-pushd /home/docker/dockersetup/
-tar -xf tor-browser_en-US.tar.xz -C /home/docker/
-chmod -R 777 /home/docker/tor-browser_en-US/
+pushd ${BASE}
+cp ./dockersetup/tor-browser_en-US.tar.xz ${BASE}/tor-browser_en-US-cp.tar.xz
+tar -xf tor-browser_en-US-cp.tar.xz -C ${BASE}
+chmod -R 777 ${BASE}/tor-browser_en-US/
+rm ${BASE}/tor-browser_en-US-cp.tar.xz
 
 # cp PT repository to container's own space.
 echo "Get WFDefProxy"
@@ -40,9 +42,6 @@ cp /home/docker/dockersetup/autoconfig.js ${AUTO_CONFIG_PATH}
 cp /home/docker/dockersetup/firefox.cfg ${TORRC_CONFIG_PATH}
 
 
-pushd ${BASE}
-
-# create dockerfile
 # echo 'UseBridges 1' > ${TORRC_PATH}
 # echo 'Bridge '${wfd}' 40.121.250.145:'${port}' '${fingerprint}' '${cert}'' >> ${TORRC_PATH}
 echo 'ClientTransportPlugin '${wfd}' exec /home/docker/'${PT}'-cp/obfs4proxy/obfs4proxy' >> ${TORRC_PATH}
@@ -57,7 +56,7 @@ fi
 
 
 # # launch crawler
-pushd ${BASE}/docker/AlexaCrawler
+pushd ${BASE}/AlexaCrawler
 export MOZ_HEADLESS=1
 
 ## TBB11 requires non-root to run 
