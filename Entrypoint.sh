@@ -35,9 +35,13 @@ echo "Get WFDefProxy"
 cp -r /home/docker/${PT} /home/docker/${PT}-cp
 chmod -R 777 /home/docker/${PT}-cp
 
-# tor-log-folder 
+# tor-log-folder
 mkdir -p /home/docker/tor-config
 chmod -R 777 /home/docker/tor-config
+
+# dataset dump folder 
+mkdir -p /home/docker/AlexaCrawler/dump
+chmod -R 777 /home/docker/AlexaCrawler/dump
 
 # set user profile js file
 cp /home/docker/dockersetup/autoconfig.js ${AUTO_CONFIG_PATH}
