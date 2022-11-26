@@ -47,7 +47,7 @@ b=2
 mode=clean
 open=0
 
-fingerprint=CF9DB3F4DF40EF75ECAE937ABC39D4B46AD26D78
+fingerprint=3D78AD56A9D95CF08CB3FFCF96DD7F0C9565368E
 
 
 
@@ -83,7 +83,8 @@ CRAWL_PARAMS=--start ${start} --end ${end} -m ${m} -b ${b} \
 --open ${open} --headless\
 --who ${tag} --mode ${mode} \
 --tbblog ${TORCONFIG_PATH}/torclient-${tag}.log  \
--w sites/Tranco_26Oct_2022_top10k_filtered_cp.list 
+-w sites/Tranco_26Oct_2022_top10k_filtered_cp.list \
+--randomize 
 # -l ${BASE_PATH}/AlexaCrawler/list/extra.list -s
 
 # Make routines
