@@ -50,7 +50,7 @@ chmod -R 777 /home/docker/${PT}-cp
 
 if [ "${wfd}" == "wfgan" ]; then
 	echo "Start pyserver..."
-	python3 /home/${PT}/transports/wfgan/grpc/py/server.py --log /home/docker/tor-config/pyserver_${tag}.log -c observer &
+	python3 /home/${PT}-cp/transports/wfgan/grpc/py/server.py --log /home/docker/tor-config/pyserver_${tag}.log -c observer &
 	sleep 5
 fi
 
